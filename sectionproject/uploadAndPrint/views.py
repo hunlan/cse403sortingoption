@@ -5,11 +5,12 @@ Created on Oct 18, 2012
 '''
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse
 from sectionproject.uploadAndPrint.forms import DocumentForm
-from sectionproject.uploadAndPrint.models import Document
+from sectionproject.uploadAndPrint.Outputer import outputFile, formatOutput
+from sectionproject.uploadAndPrint.InputFile import InputFile
+from django.http import HttpResponse, Http404
 
-def upload(request):
+def list(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -19,16 +20,18 @@ def upload(request):
             for chunk in myFile.chunks():
                 mystring += chunk
 
-            # Redirect to the document list after POST
-            #return HttpResponseRedirect(reverse('views.list'))
-       
-            return HttpResponse(mystring)
+            infile = None
+            #try:
+            infile = InputFile(mystring.__str__())
+            #except Exception:
+            #    return Http404
+
+            fileOutputString = formatOutput(infile.getSortType(), infile.getUrls())
+
+            return outputFile('outfile.txt', fileOutputString)
     else:
         form = DocumentForm() # A empty, unbound form
-
-    # Load documents for the list page
-    documents = Document.objects.all()
-
+        
     # Render list page with the documents and the form
     return render_to_response(
         'list.html',
