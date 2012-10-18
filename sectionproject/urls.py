@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^', include('sectionproject.uploadAndPrint.urls')),
     # Examples:
     # url(r'^$', 'sectionproject.views.home', name='home'),
     # url(r'^sectionproject/', include('sectionproject.foo.urls')),
