@@ -14,8 +14,6 @@ def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(docfile = request.FILES['docfile'])
-            newdoc.save()
             myFile = request.FILES['docfile']
             mystring = '';
             for chunk in myFile.chunks():
