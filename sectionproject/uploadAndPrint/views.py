@@ -6,7 +6,7 @@ Created on Oct 18, 2012
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from sectionproject.uploadAndPrint.forms import DocumentForm
-from sectionproject.uploadAndPrint.Outputer import outputFile, formatOutput
+from sectionproject.uploadAndPrint.Outputer import outputFile
 from sectionproject.uploadAndPrint.InputFile import InputFile
 from django.http import HttpResponse, Http404
 
@@ -40,11 +40,8 @@ def list(request):
             # Sort Urls
             sortedUrls = infile.sortUrls()
 
-            # List to String
-            fileOutputString = formatOutput(sortedUrls)
-
             # String to Response
-            return outputFile(__PREFIX + myFile.name, fileOutputString)
+            return outputFile(__PREFIX + myFile.name, sortedUrls)
     else:
         form = DocumentForm() # A empty, unbound form
         
