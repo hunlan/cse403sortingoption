@@ -10,6 +10,8 @@ from sectionproject.uploadAndPrint.Outputer import outputFile, formatOutput
 from sectionproject.uploadAndPrint.InputFile import InputFile
 from django.http import HttpResponse, Http404
 
+__PREFIX = 'sorted-'
+
 def list(request):
     # Handle file upload
     if request.method == 'POST':
@@ -42,7 +44,7 @@ def list(request):
             fileOutputString = formatOutput(sortedUrls)
 
             # String to Response
-            return outputFile('outfile.txt', fileOutputString)
+            return outputFile(__PREFIX + myFile.name, fileOutputString)
     else:
         form = DocumentForm() # A empty, unbound form
         
