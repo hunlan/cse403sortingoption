@@ -15,19 +15,33 @@ def list(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
+            # Get file from request
             myFile = request.FILES['docfile']
+            
+            # Get text from file
             mystring = '';
             for chunk in myFile.chunks():
                 mystring += chunk
 
+            # Verify that radio button is selected
+            if not ('sort' in request.POST):
+                print('sort not in request.POST')
+                return Http404
+
+            # Try to create inFile object for sorting
             infile = None
-            #try:
-            infile = InputFile(mystring.__str__())
-            #except Exception:
-            #    return Http404
+            try:
+                infile = InputFile(request.POST['sort'], mystring.__str__())
+            except Exception:
+                return Http404
 
-            fileOutputString = formatOutput(infile.getSortType(), infile.getUrls())
+            # Sort Urls
+            sortedUrls = infile.sortUrls()
 
+            # List to String
+            fileOutputString = formatOutput(sortedUrls)
+
+            # String to Response
             return outputFile('outfile.txt', fileOutputString)
     else:
         form = DocumentForm() # A empty, unbound form

@@ -8,7 +8,7 @@ import csv
 
 def outputFile(filename, content):
     # Create the HttpResponse object with the appropriate CSV header.
-    response = HttpResponse(mimetype='text/csv')
+    response = HttpResponse(mimetype='text/plain')
     response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
 
     writer = csv.writer(response)
@@ -16,10 +16,9 @@ def outputFile(filename, content):
 
     return response
 
-def formatOutput(sortType, list):
-    retString = sortType
-    
-    for s in list:
-        retString += '\n' + s
+def formatOutput(lis):  
+    retString = ''  
+    for s in lis:
+        retString += s + '\n'
     
     return retString
