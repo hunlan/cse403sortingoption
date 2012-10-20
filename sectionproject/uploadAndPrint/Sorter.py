@@ -3,7 +3,7 @@ Created on Oct 18, 2012
 
 @author: hunlan
 '''
-from heapq import heappush
+from heapq import heappush, heappop
 
 def GodSort(urls):
     return urls
@@ -21,7 +21,7 @@ def HeapSort(urls):
     heap = []
     for value in urls:
         heappush(heap, value)
-    return heap
+    return [heappop(heap) for i in range(len(heap))]
 
 def InsertSort(urls):
     sorted_urls = [urls.pop()]
