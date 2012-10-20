@@ -14,9 +14,23 @@ def MergeSort(urls):
     mid = len(urls) / 2
     left = MergeSort(urls[:mid])
     right = MergeSort(urls[mid:])
-    return merge(left, right)
+    return _merge(left, right)
 
-def merge(left, right):
+def HeapSort(urls):
+    return urls
+
+def InsertSort(urls):
+    sorted_urls = [urls.pop()]
+    for url in urls:
+        for i in range(0, len(sorted_urls)):
+            if url < sorted_urls[i]:
+                sorted_urls.insert(i, url)
+                break
+            if i == len(sorted_urls) - 1:
+                sorted_urls.append(url)
+    return sorted_urls
+
+def _merge(left, right):
     i = 0
     j = 0
     sort = []
@@ -38,17 +52,3 @@ def merge(left, right):
         j += 1
             
     return sort
-
-def HeapSort(urls):
-    return urls
-
-def InsertSort(urls):
-    sorted_urls = [urls.pop()]
-    for url in urls:
-        for i in range(0, len(sorted_urls)):
-            if url < sorted_urls[i]:
-                sorted_urls.insert(i, url)
-                break
-            if i == len(sorted_urls) - 1:
-                sorted_urls.append(url)
-    return sorted_urls
