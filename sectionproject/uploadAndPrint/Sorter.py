@@ -23,7 +23,7 @@ def HeapSort(urls):
     for value in urls:
         heappush(heap, value)
     
-    for i in range(len(heap)):
+    while(len(heap)>0):
         ret.append(heappop(heap))
     return ret
 
