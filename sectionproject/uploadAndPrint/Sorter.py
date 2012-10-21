@@ -19,9 +19,13 @@ def MergeSort(urls):
 
 def HeapSort(urls):
     heap = []
+    ret = []
     for value in urls:
         heappush(heap, value)
-    return [heappop(heap) for i in range(len(heap))]
+    
+    for i in range(len(heap)):
+        ret.append(heappop(heap))
+    return ret
 
 def InsertSort(urls):
     sorted_urls = [urls.pop()]
