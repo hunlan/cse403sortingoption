@@ -6,8 +6,8 @@ Created on Oct 18, 2012
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from sectionproject.uploadAndPrint.forms import DocumentForm
-from sectionproject.uploadAndPrint.Outputer import outputFile
-from sectionproject.uploadAndPrint.InputFile import InputFile
+from sectionproject.inputoutput.Outputer import outputFile
+from sectionproject.inputoutput.InputFile import InputFile
 from django.http import HttpResponse, Http404
 
 __PREFIX = 'sorted-'

@@ -6,9 +6,11 @@ determining which sorting alg to use
 
 @author: hunlan
 '''
-from sectionproject.uploadAndPrint.SortType import SortType
-from sectionproject.uploadAndPrint.Sorter import GodSort, MergeSort, HeapSort,\
-    InsertSort
+from sectionproject.sorter.SortType import SortType
+from sectionproject.sorter.InsertionSorter import InsertionSorter
+from sectionproject.sorter.HeapSorter import HeapSorter
+from sectionproject.sorter.MergeSorter import MergeSorter
+from sectionproject.sorter.BinarySorter import BinarySorter
 
 class InputFile(object):
     def __init__(self, type, str):
@@ -28,16 +30,16 @@ class InputFile(object):
     
     def sortUrls(self):
         if self.sorttype == SortType.GOD_SORT :
-            return GodSort(self.urls);
+            return BinarySorter.sort(self.urls);
         
         if self.sorttype == SortType.MERGE_SORT:
-            return MergeSort(self.urls)
+            return MergeSorter.sort(self.urls)
         
         if self.sorttype == SortType.HEAP_SORT:
-            return HeapSort(self.urls)
+            return HeapSorter.sort(self.urls)
         
         if self.sorttype == SortType.INSERT_SORT:
-            return InsertSort(self.urls)
+            return InsertionSorter.sort(self.urls)
     
     def __parseurl(self, urls):
         mylist = filter(lambda s: s.strip(), urls)
