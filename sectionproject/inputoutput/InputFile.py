@@ -29,7 +29,7 @@ class InputFile(object):
         return self.urls
     
     def sortUrls(self):
-        if self.sorttype == SortType.GOD_SORT :
+        if self.sorttype == SortType.BINARY_SORT :
             return BinarySorter.sort(self.urls);
         
         if self.sorttype == SortType.MERGE_SORT:
