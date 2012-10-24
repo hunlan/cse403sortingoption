@@ -1,6 +1,10 @@
 '''
 Created on Oct 23, 2012
 
+This is a binary sort.
+It inputs the list of urls into a node, then invoke
+the node.getSorted method to sort the urls.
+
 @author: hunlan
 '''
 from sectionproject.sorter.Sorter import Sorter
@@ -14,6 +18,9 @@ class BinarySorter(Sorter):
             
         return node.getSorted()
     
+'''
+private node class
+'''
 class _Node:
     def __init__(self, data):
         self.left = None
@@ -29,6 +36,9 @@ class _Node:
     def getData(self):
         return self.data
     
+    '''
+    inserted in sorted order
+    '''
     def insert(self, data):
         if data < self.data:
             if self.left is None:
@@ -41,6 +51,9 @@ class _Node:
             else:
                 self.right.insert(data)
                 
+    '''
+    traverse the tree and output a list of sorted list
+    '''
     def getSorted(self):
         ret = []
         if self.left:

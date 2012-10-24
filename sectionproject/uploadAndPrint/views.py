@@ -1,6 +1,9 @@
 '''
 Created on Oct 18, 2012
 
+This is the controller.  When user enters the main website, the
+controller that execute that link is the method "list"
+
 @author: hunlan
 '''
 from django.shortcuts import render_to_response
@@ -12,6 +15,9 @@ from django.http import HttpResponse, Http404
 
 __PREFIX = 'sorted-'
 
+'''
+this method is called when user enters our main page.
+'''
 def list(request):
     # Handle file upload
     if request.method == 'POST':
@@ -40,7 +46,7 @@ def list(request):
             # Sort Urls
             sortedUrls = infile.sortUrls()
 
-            # String to Response
+            # File to Response
             return outputFile(__PREFIX + myFile.name, sortedUrls)
     else:
         form = DocumentForm() # A empty, unbound form

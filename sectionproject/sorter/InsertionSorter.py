@@ -1,6 +1,8 @@
 '''
 Created on Oct 23, 2012
 
+Insertion sorter
+
 @author: hunlan
 '''
 from sectionproject.sorter.Sorter import Sorter
