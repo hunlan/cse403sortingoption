@@ -14,10 +14,18 @@
                 {{ form.docfile.errors }}
                 {{ form.docfile }}
             </p>
+            <p> Original Sorters </p>
             <input type="radio" name="sort" value="binary" checked>Binary Sort<br>
             <input type="radio" name="sort" value="merge">Merge Sort<br>
             <input type="radio" name="sort" value="heap">Heap Sort<br>
             <input type="radio" name="sort" value="insert">Insertion Sort<br>
+            
+            <p> Other Sorters </p>
+            <input type="radio" name="sort" value="other_bubble">Bubble Sort<br>
+            <input type="radio" name="sort" value="other_merge">Merge Sort<br>
+            <input type="radio" name="sort" value="other_quick">Quick Sort<br>
+            <input type="radio" name="sort" value="other_radix">Radix Sort<br>
+            
             
 			<p><input type="submit" value="Compute" /></p>
         </form>

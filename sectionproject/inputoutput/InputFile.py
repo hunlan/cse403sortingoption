@@ -11,6 +11,10 @@ from sectionproject.sorter.InsertionSorter import InsertionSorter
 from sectionproject.sorter.HeapSorter import HeapSorter
 from sectionproject.sorter.MergeSorter import MergeSorter
 from sectionproject.sorter.BinarySorter import BinarySorter
+from sectionproject.sorter.OtherMergeSorter import OtherMergeSorter
+from sectionproject.sorter.OtherBubbleSorter import OtherBubbleSorter
+from sectionproject.sorter.OtherQuickSorter import OtherQuickSorter
+from sectionproject.sorter.OtherRadixSorter import OtherRadixSorter
 
 class InputFile(object):
     def __init__(self, type, str):
@@ -40,6 +44,21 @@ class InputFile(object):
         
         if self.sorttype == SortType.INSERT_SORT:
             return InsertionSorter.sort(self.urls)
+        
+        # Other groups
+        if self.sorttype == SortType.OTHER_BUBBLE_SORT:
+            return OtherBubbleSorter.sort(self.urls)
+        
+        if self.sorttype == SortType.OTHER_MERGE_SORT:
+            return OtherMergeSorter.sort(self.urls)
+        
+        if self.sorttype == SortType.OTHER_QUICK_SORT:
+            return OtherQuickSorter.sort(self.urls)
+        
+        if self.sorttype == SortType.OTHER_RADIX_SORT:
+            return OtherRadixSorter.sort(self.urls)
+        
+        raise Exception('unexpected error, no sorting alg found')
     
     def __parseurl(self, urls):
         mylist = filter(lambda s: s.strip(), urls)
