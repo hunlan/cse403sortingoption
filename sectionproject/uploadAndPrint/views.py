@@ -39,7 +39,7 @@ def list(request):
             # Try to create inFile object for sorting
             infile = None
             try:
-                infile = InputFile(request.POST['sort'], mystring.__str__())
+                infile = InputFile(request.POST['sort'], 'validate' in request.POST, mystring.__str__())
             except Exception:
                 return Http404
 
