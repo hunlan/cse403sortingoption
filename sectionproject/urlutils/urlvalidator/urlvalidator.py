@@ -47,7 +47,11 @@ class UrlValidator():
         string += self.scheme if self.scheme != None else 'None'
         string += '\n'
         
-        string +=  'hostType: ' + HostEnum.getString(self.hostType) + '\n' +\
+        string += 'userpass: '
+        string += self.userPassword if self.userPassword != None else 'None'
+        string += '\n'
+        
+        string += 'hostType: ' + HostEnum.getString(self.hostType) + '\n' +\
                     'hostName: ' + self.hostName + '\n'
     
         string += 'port:     '
