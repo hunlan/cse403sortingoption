@@ -6,6 +6,7 @@ This document describe the I) what is implemented in the project, II) instructio
 /*---------------------------*\
 I. What is in the Project:
 \*---------------------------*/
+
 This project is a django web application that takes in an input file, a sorting algorithm, and whether to validate URLs and then sort the urls.
 
 In addition, this project included a django python script (checkURL.py) that reads from a file a list of URLs and displays 1) source URL, 2) is url valid, 3) canonical url, 4) is url source unique, and 5) is url canonical unique in read order.  This script uses files located in “urlutils” package
@@ -14,6 +15,7 @@ In addition, this project included a django python script (checkURL.py) that rea
 /*---------------------------*\
 II. Running the Project:
 \*---------------------------*/
+
 1) checkout the project via command line:
 $ git clone git@github.com:hunlan/mycsesortingoption.git
 
@@ -102,7 +104,10 @@ UrlComparator:
 UrlComparator (sectionproject>urlutils>urlcomparator>urlcomparator.py) is a class that compares two url in terms of source or canonical form or determines whether a url is source or cononical unique amoung other urls.  Source url comparison compares two url base on the raw value of an url.  Canonical url comparisons first converts a url to a canonical form then compares the canonical urls.  Note that the latter comparison requires the url to be a valid url.
 
 
+/*-------------------------
 IV. Exceptions
+  -------------------------*/
+
 Due to time and resource limitations, the url validation process is not perfect.  The exceptions listed below are mostly edge cases that are not handled.
 
 UrlValidator

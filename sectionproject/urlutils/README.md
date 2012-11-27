@@ -3,17 +3,19 @@
 Introduction:
 This document describe the I) what is implemented in the project, II) instructions to run the project, III) design choice and IV) exceptions that were made for the project.  The project is located at “git@github.com:hunlan/mycsesortingoption.git”
 
-/*---------------------------*\
+/*-------------------------
 I. What is in the Project:
-\*---------------------------*/
+  -------------------------*/
+
 This project is a django web application that takes in an input file, a sorting algorithm, and whether to validate URLs and then sort the urls.
 
 In addition, this project included a django python script (checkURL.py) that reads from a file a list of URLs and displays 1) source URL, 2) is url valid, 3) canonical url, 4) is url source unique, and 5) is url canonical unique in read order.  This script uses files located in “urlutils” package
 
 
-/*---------------------------*\
+/*-------------------------
 II. Running the Project:
-\*---------------------------*/
+  -------------------------*/
+
 1) checkout the project via command line:
 $ git clone git@github.com:hunlan/mycsesortingoption.git
 
@@ -48,9 +50,10 @@ $ /usr/local/pgsql/bin/postgres -D /usr/local/pgsql/data >logfile 2>&1 &
 10) Now you are done, you can run the unit tests by invoking “python manage.py test” on top-level
 
 
-/*---------------------------*\
+/*-------------------------
 III. Design Choices
-\*---------------------------*/
+  -------------------------*/
+
 UrlValidator:
 UrlValidator (sectionproject>urlutils>urlvalidator>urlvalidator.py) is a class that validates whether a url is a valid url or not.  In addition, this class will store the parts of the url into fields as it validates a url.  In contrast, I could have decoupled the two functions by having one class that validates url and one class that tokenize url.  However, I chose to tokenize a url during the validation process because  the way I validate a url requires breaking the url into the various parts of a url, and I figure might as well store those parts into fields of the class instead of doing the same thing twice.  
 
@@ -101,9 +104,10 @@ UrlComparator:
 UrlComparator (sectionproject>urlutils>urlcomparator>urlcomparator.py) is a class that compares two url in terms of source or canonical form or determines whether a url is source or cononical unique amoung other urls.  Source url comparison compares two url base on the raw value of an url.  Canonical url comparisons first converts a url to a canonical form then compares the canonical urls.  Note that the latter comparison requires the url to be a valid url.
 
 
-/*---------------------------*\
+/*-------------------------
 IV. Exceptions
-\*---------------------------*/
+  -------------------------*/
+
 Due to time and resource limitations, the url validation process is not perfect.  The exceptions listed below are mostly edge cases that are not handled.
 
 UrlValidator
