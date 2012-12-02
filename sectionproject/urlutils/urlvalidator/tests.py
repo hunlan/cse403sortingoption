@@ -9,9 +9,11 @@ from django.test import TestCase
 from sectionproject.urlutils.urlvalidator.urlvalidator import UrlValidator
 
 class UrlValidatorTest(TestCase):
+    # setup urlvalidator
     def setUp(self):
         self.urlValidator = UrlValidator()
     
+    # wiki example validation, expect true
     def test_wikiexample(self):
         urls = ['http://en.wikipedia.org/wiki/Unit_testing#Unit_testing_limitations',\
                 'http://en.wikipedia.org/wiki/Unit_testing#Language-']
